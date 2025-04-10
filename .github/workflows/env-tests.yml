@@ -1,0 +1,23 @@
+name: Hello World
+
+on:
+   push:
+     branches: [ "main" ]
+   pull_request:
+     branches: [ "main" ]
+
+env:
+  DAY_OF_WEEK: Monday
+ 
+jobs:
+   Hello-World-Job:
+     runs-on: [self-hosted, macOS, ARM64]
+     env:
+      IMAGE_TAG: ${{ github.sha }}   
+     steps:
+      - name: Echo env var
+        run: |
+          echo 12345
+          pwd
+          export TEST=1234
+          echo $IMAGE_TAG
