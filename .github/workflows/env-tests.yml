@@ -20,4 +20,6 @@ jobs:
           echo 12345
           pwd
           export TEST=1234
+          echo $DAY_OF_WEEK
           echo $IMAGE_TAG
+          echo $TEST
