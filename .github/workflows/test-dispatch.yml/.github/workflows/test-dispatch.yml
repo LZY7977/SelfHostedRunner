@@ -1,0 +1,17 @@
+name: Test Dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      cmd:
+        description: "Command to echo"
+        required: true
+        default: "hello"
+        type: string
+
+jobs:
+  run:
+    runs-on: [self-hosted, macOS, ARM64]
+    steps:
+      - name: Echo input
+        run: echo ${{ github.event.inputs.cmd }}
