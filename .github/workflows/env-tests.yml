@@ -5,6 +5,13 @@ on:
      branches: [ "main" ]
    pull_request:
      branches: [ "main" ]
+   workflow_dispatch:
+     inputs:
+       cmd:
+         description: "Command to echo"
+         required: true
+         default: "hello"
+         type: string
 
 env:
   DAY_OF_WEEK: Monday
@@ -24,3 +31,6 @@ jobs:
           echo $IMAGE_TAG
           echo $TEST
           cat /Users/zhouyli/actions-runner/.env
+      - name: Echo input
+        if: github.event_name == 'workflow_dispatch'
+        run: echo ${{ github.event.inputs.cmd }}
